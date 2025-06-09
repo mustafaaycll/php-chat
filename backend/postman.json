@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "PHP Chat Backend",
+    "_postman_id": "a4bfc914-836d-4e96-85f6-php-chat-collection",
+    "description": "Test collection for your PHP Chat Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"alice\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/users", "host": ["localhost"], "port": "8080", "path": ["users"] }
+      }
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": { "raw": "http://localhost:8080/users/alice", "host": ["localhost"], "port": "8080", "path": ["users", "alice"] }
+      }
+    },
+    {
+      "name": "Create Chat",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"alice\",\n    \"name\": \"General\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/chats", "host": ["localhost"], "port": "8080", "path": ["chats"] }
+      }
+    },
+    {
+      "name": "Join Chat",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"alice\"\n}"
+        },
+        "url": { "raw": "http://localhost:8080/chats/1/join", "host": ["localhost"], "port": "8080", "path": ["chats", "1", "join"] }
+      }
+    },
+    {
+      "name": "Send Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"alice\",\n    \"content\": \"Hello world!\",\n    \"sent_at\": 1717710000\n}"
+        },
+        "url": { "raw": "http://localhost:8080/chats/1/messages", "host": ["localhost"], "port": "8080", "path": ["chats", "1", "messages"] }
+      }
+    },
+    {
+      "name": "List Messages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8080/chats/1/messages", "host": ["localhost"], "port": "8080", "path": ["chats", "1", "messages"] }
+      }
+    },
+    {
+      "name": "List Chats Joined",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8080/chats/joined?username=alice", "host": ["localhost"], "port": "8080", "path": ["chats", "joined"], "query": [{ "key": "username", "value": "alice" }] }
+      }
+    },
+    {
+      "name": "List Chats Not Joined",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "http://localhost:8080/chats/not-joined?username=alice", "host": ["localhost"], "port": "8080", "path": ["chats", "not-joined"], "query": [{ "key": "username", "value": "alice" }] }
+      }
+    }
+  ]
+}
