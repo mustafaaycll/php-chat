@@ -1,0 +1,46 @@
+networks:
+  intranet:
+    driver: bridge
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./backend/data:/app/data
+    restart: unless-stopped
+    networks:
+      - intranet
+    depends_on:
+      broker:
+        condition: service_healthy
+  
+  server:
+    image: nginx
+    container_name: server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
+    restart: unless-stopped
+    networks:
+      - intranet
+    depends_on:
+      - backend
+
+  broker:
+    image: redis
+    container_name: broker
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - intranet
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
