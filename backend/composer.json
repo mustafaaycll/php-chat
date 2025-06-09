@@ -1,0 +1,25 @@
+{
+    "name": "mustafaaycll/php-chat",
+    "description": "A Slim-based chat backend",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Mustafaaycll\\PhpChat\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mustafa Ahmet Yücel",
+            "email": "mustafayucel.cs@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "php-di/php-di": "^7.0",
+        "illuminate/database": "^12.17",
+        "monolog/monolog": "^3.9",
+        "predis/predis": "^3.0"
+    }
+}
