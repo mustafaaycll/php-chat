@@ -16,7 +16,7 @@ if [ ! -d "venv" ]; then
     python3 -m venv venv
     echo "[launch.sh] Installing requirements..."
     ./venv/bin/pip install --upgrade pip
-    ./venv/bin/pip install pyqt6 pyqt6-tools redis requests
+    ./venv/bin/pip install -r requirements.txt
 else
     echo "[launch.sh] Using existing venv"
 fi
