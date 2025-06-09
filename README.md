@@ -7,7 +7,7 @@ A simple full-stack chat system:
 - **Broker:** Redis pub/sub for real-time updates
 - **Server:** NGINX reverse proxy
 
-![Screenshot](assets/screenshot.png)
+![Screenshot](assets/screenshot.jpeg)
 
 ---
 
